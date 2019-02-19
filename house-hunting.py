@@ -24,21 +24,15 @@ portion_saved = annual_salary / 12 * portion_saved
 print(portion_saved)
 
 months_needed = 0
-running = True
+
 #This loop will run as long as running is valued at True. Once the value of current_savings reaches or exceeds down_payment the loop will end and print out the amount of months needed. 
-while running:
-   
+while current_savings < down_payment:
+    #this will take your savings pool and multiply it by an interest rate to see your monthly return, it then adds that amount to your savings.
+    current_savings += (current_savings / 12 * r)
+    print(current_savings)
 
-    if current_savings >= down_payment:
-        print ("It will take you ", months_needed," months to put a down payment on your house.")
-        running = False
-    elif current_savings < down_payment:
-        #this will take your savings pool and multiply it by an interest rate to see your monthly return, it then adds that amount to your savings.
-        current_savings = current_savings + (current_savings / 12 * r)
-        print(current_savings)
-
-        #here we take the monthly portion you are putting into your savings and adding it to your starting monthly amount.
-        current_savings = portion_saved + current_savings
-        print(current_savings)
-        months_needed = months_needed + 1 #simple value incrementor. Each time the loop goes through months_needed will increase.
-        running = True
+    #here we take the monthly portion you are putting into your savings and adding it to your starting monthly amount.
+    current_savings += portion_saved
+    print(current_savings)
+    months_needed += 1 #simple value incrementor. Each time the loop goes through months_needed will increase.
+print ("It will take you ", months_needed," months to put a down payment on your house.")     
